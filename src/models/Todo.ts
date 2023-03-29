@@ -11,14 +11,6 @@ export default class Todo extends Model {
       message: DataTypes.STRING,
       state: DataTypes.STRING,
       /*B-addModelAttributes*/
-
-/*Code injected by: Images-alterAddModelAttributes*/
-image: {
-        type: DataTypes.STRING,
-        defaultValue: ''
-      }
-/*Code injected by: Images-alterAddModelAttributes*/
-
     }, {
       sequelize,
       modelName: 'Todo'

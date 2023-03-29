@@ -17,11 +17,6 @@
     "express": "^4.18.2",
     "sequelize": "^6.29.0",
     
-
-
-"express-fileupload": "^1.4.0",
-
-
     "sqlite3": "^5.1.4"
   },
   "devDependencies": {
@@ -32,11 +27,6 @@
     "@types/validator": "^13.7.13",
     "ts-node": "^10.9.1",
     
-
-
-"@types/express-fileupload": "^1.4.1",
-
-
     "typescript": "^4.9.5"
   }
 }

@@ -6,11 +6,6 @@ import TodoController from './controllers/TodoController';
 import DBConfig from './db/DBConfig';
 /*B-addImports*/
 
-/*Code injected by: Images-alterAddImports*/
-import fileUpload from "express-fileupload";
-/*Code injected by: Images-alterAddImports*/
-
-
 class Index {
   public static app: Express;
 
@@ -21,12 +16,6 @@ class Index {
     Index.app.use(bodyParser.urlencoded({ extended: true }));
     Index.app.use(bodyParser.json());
     /*B-addAppUseCalls*/
-
-/*Code injected by: Images-alterAddAppUseCalls*/
-Index.app.use(fileUpload({ createParentPath: true }));
-     Index.app.use(express.static("public"));
-/*Code injected by: Images-alterAddAppUseCalls*/
-
     await Index.startDB();
     Index.configRoutes();
     Index.startServer();

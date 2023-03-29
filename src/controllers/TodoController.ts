@@ -2,11 +2,6 @@ import { Request, Response } from "express";
 import Todo from '../models/Todo';
 /*B-addControllerImports*/
 
-/*Code injected by: Images-alterAddControllerImports*/
-import * as fs from 'fs';
-/*Code injected by: Images-alterAddControllerImports*/
-
-
 export default class TodoController {
   public static async listClosed(req: Request, res: Response) {
     const closedTodos = await Todo.findAll({ where: { 'state': 'CLOSED' } });
@@ -21,26 +16,10 @@ export default class TodoController {
   public static async create(req: Request, res: Response) {
     /*B-addCreateActions*/
 
-/*Code injected by: Images-alterAddCreateActions*/
-let imageName = '';
-        if (req.files && req.files.image){
-        const image = req.files.image as any;
-        imageName = `${Date.now()}_${image.name}`;
-        const path = __dirname + "../../../public/images/" + imageName;
-        image.mv(path);
-        }
-/*Code injected by: Images-alterAddCreateActions*/
-
-
     await Todo.create({
       message: req.body.message,
       state: "OPEN",
       /*B-addTodoCreateValues*/
-
-/*Code injected by: Images-alterAddTodoCreateValues*/
-image: imageName,
-/*Code injected by: Images-alterAddTodoCreateValues*/
-
     });
     res.json({ "res": "Todo created successfully" });
   }
@@ -48,19 +27,6 @@ image: imageName,
   public static async delete(req: Request, res: Response) {
     const id = req.params.id;
     /*B-addDeleteActions*/
-
-/*Code injected by: Images-alterAddDeleteActions*/
-const todoToDelete = await Todo.findByPk(id) as any;
-        if(todoToDelete && todoToDelete.image){
-            try {
-                const path = __dirname + "../../../public/images/" + todoToDelete.image;
-                fs.unlinkSync(path);
-            } catch (err) {
-                console.error(err);
-            }
-        }
-/*Code injected by: Images-alterAddDeleteActions*/
-
     await Todo.destroy({ where: { id: id } });
     res.json({ "res": "Todo deleted successfully" });
   }
